@@ -39,59 +39,6 @@ export default function Home() {
   const [message, setMessage] = useState('')
 
   const sendMessage = async () => {
-    // if (!message.trim()) return; // Don't send empty messages
-
-    // setMessage('')
-    // setMessages((messages) => [
-    //   ...messages,
-    //   { role: 'user', content: message },
-    //   { role: 'assistant', content: '' },
-    // ])
-
-    // try {
-    //   const response = await fetch("https://openrouter.ai/api/v1", {
-    //     method: "POST",
-    //     headers: {
-    //       "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //       "model": "openai/gpt-3.5-turbo",
-    //       "messages": [
-    //         ...messages,
-    //         { role: "user", content: message }
-    //       ],
-    //     })
-    //   })
-
-    //   if (!response.ok) {
-    //     throw new Error('Network response was not ok')
-    //   }
-
-    //   const reader = response.body.getReader()
-    //   const decoder = new TextDecoder()
-
-    //   while (true) {
-    //     const { done, value } = await reader.read()
-    //     if (done) break
-    //     const text = decoder.decode(value, { stream: true })
-    //     setMessages((messages) => {
-    //       let lastMessage = messages[messages.length - 1]
-    //       let otherMessages = messages.slice(0, messages.length - 1)
-    //       return [
-    //         ...otherMessages,
-    //         { ...lastMessage, content: lastMessage.content + text },
-    //       ]
-    //     })
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error)
-    //   setMessages((messages) => [
-    //     ...messages,
-    //     { role: 'assistant', content: "I'm sorry, but I encountered an error. Please try again later." },
-    //   ])
-    // }
-
     if (!message.trim()) return;  // Don't send empty messages
 
     setMessage('')
@@ -109,6 +56,81 @@ export default function Home() {
         },
         body: JSON.stringify([...messages, { role: 'user', content: message }]),
       })
+
+
+      // Added conditional responses based on user input
+      if (message.toLowerCase.includes('billing', 'payment', 'subscription')) {
+        setMessages((messages) => [
+          ...messages,
+          {
+            role: 'assistant',
+            content: `For billing, payment, or subscription inquiries:
+            
+            1. Billing Process:
+
+            Your subscription fee will be automatically billed monthly based on your chosen membership plan.
+            Accepted payment methods include credit/debit cards and PayPal.
+            
+            2. Cancelling Your Subscription:
+
+            To cancel your subscription, log in to your account, go to the "Account Settings" section, and select "Cancel Subscription."
+            You will continue to have access to your membership features until the end of your current billing cycle.
+            
+            3. Updating Payment Information:
+
+            To update your payment method, log in to your account, navigate to "Billing Information," and enter your new payment details.
+            
+            4. Refunds:
+
+            Refunds are processed on a case-by-case basis. Please contact our support team for assistance with any refund requests.
+            
+            5. Billing Issues:
+
+            If you encounter any issues with billing, such as incorrect charges or failed payments, please contact our support team at [support email] for prompt assistance.
+            
+            6. Membership Plans:
+
+            Basic Membership - $0/month
+            Access to basic features, email support, monthly newsletters, and basic event planning.
+            Premium Membership - $15/month
+            Access to all features, priority email support, weekly newsletters, and exclusive event planning.
+            VIP Membership - $35/month
+            Access to all features, 24/7 priority support, daily newsletters, exclusive content, and personalized event planning assistance.`,
+          },
+        ]);
+      }
+
+      // Added conditional responses based on user input
+      if (message.toLowerCase().includes('membership', 'pricing')) {
+        setMessages((messages) => [
+          ...messages,
+          {
+            role: 'assistant',
+            content: `Here are the membership options available on our platform:
+    
+          1. **Basic Membership** - $0/month
+            - Access to basic features
+            - Email support
+            - Monthly newsletters
+            - Access to basic event planning
+          
+          2. **Premium Membership** - $15/month
+            - Access to all features
+            - Priority email support
+            - Weekly newsletters
+            - Access to exclusive event planning
+          
+          3. **VIP Membership** - $35/month
+            - Access to all features
+            - 24/7 priority support
+            - Daily newsletters
+            - Access to exclusive content
+            - Personalized event planning assistance with locations, activities, and more
+          
+          If you have any further questions or need assistance with something else, feel free to ask!`,
+          },
+        ]);
+      }
 
       if (!response.ok) {
         throw new Error('Network response was not ok')
