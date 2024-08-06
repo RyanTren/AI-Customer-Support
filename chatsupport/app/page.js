@@ -160,7 +160,7 @@ export default function Home() {
           direction={'column'}
           width="500px"
           height="700px"
-          borderradius={4}
+          borderRadius={4}
           p={2}
           spacing={3}
         >
@@ -192,7 +192,7 @@ export default function Home() {
                       : theme.palette.secondary.light
                   }
                   color="white"
-                  borderradius={6}
+                  borderRadius={6}
                   p={2}
                 >
                   {message.content}
@@ -225,7 +225,7 @@ export default function Home() {
               id="outlined-basic" 
               variant="outlined"
               label="Message Planr"
-              borderradius={6}
+              borderRadius={6}
               fullWidth
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -241,7 +241,7 @@ export default function Home() {
                 color: theme.palette.primary.contrastText,
                 fontSize: 25,
               }}
-              borderradius={2}
+              borderRadius={2}
               variant="contained" 
               onClick={sendMessage}
             >
