@@ -1,12 +1,12 @@
 'use client'
 
 import * as React from 'react';
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import ResponsiveAppBar from './appbar';
 import './page.css';
 
-import { Box, Button, Stack, TextField } from '@mui/material'
+import { AppBar, Box, Button, Stack, TextField } from '@mui/material'
 import { createTheme } from '@mui/material/styles';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -33,7 +33,7 @@ export default function Home() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Welcome to Planr, your hangout planner, how can we assist you today?",
+      content: "Welcome to Hangu.ai, your hangout planner, how can we assist you today?",
     },
   ])
   const [message, setMessage] = useState('')
@@ -163,7 +163,9 @@ export default function Home() {
 
   return (      
     <Box>
-      {/* <ResponsiveAppBar /> */}
+      {/* <AppBar>
+        <ResponsiveAppBar />
+      </AppBar> */}
 
       <Box
         width="100vw"
@@ -232,7 +234,7 @@ export default function Home() {
                   border: '1px solid theme.palette.primary.main',
                 },
                 '&.Mui-focused': {
-                  border: '1px solid #3f51b5', // Change this to the desired border color when focused
+                  border: '1px solid #3f51b5',
                 },
               }}
 
@@ -246,7 +248,7 @@ export default function Home() {
 
               id="outlined-basic" 
               variant="outlined"
-              label="Message Planr"
+              label="Message Hangu.ai"
               borderRadius={6}
               fullWidth
               value={message}
@@ -258,7 +260,7 @@ export default function Home() {
               sx={{
                 backgroundColor: theme.palette.primary.main,
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.dark, // Change this to the desired hover color
+                  backgroundColor: theme.palette.primary.dark,
                 },
                 color: theme.palette.primary.contrastText,
                 fontSize: 25,

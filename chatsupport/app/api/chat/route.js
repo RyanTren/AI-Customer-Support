@@ -3,7 +3,7 @@ import OpenAI from 'openai';
 
 const systemPrompt = 
 `
-Welcome to Planr! 
+Welcome to Hangu.ai! 
 
 Planr helps you effortlessly plan and organize hangouts with friends and family. 
 Get personalized suggestions, assist with event planning, and coordinate seamlessly with your group. 

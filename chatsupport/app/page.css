@@ -1,3 +1,25 @@
 body{
     background-color: rgb(244, 239, 232);
 }
+
+.scrollable {
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: transparent transparent; /* For Firefox */
+  }
+  
+  .scrollable::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .scrollable::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
