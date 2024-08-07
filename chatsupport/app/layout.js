@@ -4,7 +4,7 @@ import ResponsiveAppBar from './appbar';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hangu.ai | Chat Support",
+  title: "hangu.ai | Chat Support",
   description: "Your AI Hangout Planner Chat Support!",
 };
 

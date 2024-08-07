@@ -59,7 +59,6 @@ function ResponsiveAppBar() {
     <AppBar position="fixed" sx={{bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: theme.palette.primary.contrastText }} />
           <Typography
             variant="h6"
             noWrap
@@ -69,13 +68,14 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
+              fontWeight: 1000,
+              letterSpacing: '.15rem',
               color: theme.palette.primary.contrastText,
+              textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)',
               textDecoration: 'none',
             }}
           >
-          Hangu.ai
+          hangu.ai
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>

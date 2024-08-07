@@ -127,7 +127,7 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
       >
-        
+        <h1 sx={{bgcolor:theme.palette.primary.main, color:theme.palette.primary.light}} spacing={3} gap={3}>Chat with us in real time!</h1>
 
         <Stack
         sx = {{
