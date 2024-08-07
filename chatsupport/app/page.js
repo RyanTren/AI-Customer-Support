@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { useState, useEffect, useRef } from 'react'
 
-import ResponsiveAppBar from './appbar';
 import './page.css';
 
 import { AppBar, Box, Button, Stack, TextField } from '@mui/material'
@@ -21,9 +20,9 @@ const theme = createTheme({
       contrastText: '#F9F7EF',
     },
     secondary: {
-      light: '#F3BA58',
-      main: '#F3B13D',
-      dark: '#EB9C13',
+      light: '#d4c8a1',
+      main: '#ada178',
+      dark: '#91886a',
       contrastText: '#F9F7EF',
     },
   },
@@ -120,10 +119,6 @@ export default function Home() {
 
   return (      
     <Box>
-      {/* <AppBar>
-        <ResponsiveAppBar />
-      </AppBar> */}
-
       <Box
         width="100vw"
         height="100vh"
@@ -170,7 +165,7 @@ export default function Home() {
                   bgcolor={
                     message.role === 'assistant'
                       ? theme.palette.primary.light
-                      : theme.palette.secondary.light
+                      : theme.palette.secondary.main
                   }
                   color="white"
                   borderRadius={6}

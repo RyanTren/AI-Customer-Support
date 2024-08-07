@@ -14,9 +14,27 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Pricing', 'Support'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#65A863',
+      main: '#50AF4D',
+      dark: '#31A72F',
+      contrastText: '#F9F7EF',
+    },
+    secondary: {
+      light: '#C2E9F5',
+      main: '#16BAEC',
+      dark: '#168CEC',
+      contrastText: '#F9F7EF',
+    },
+  },
+});
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -38,10 +56,10 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed" sx={{bgcolor: theme.palette.primary.main, color: theme.palette.primary.contrastText}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, color: theme.palette.primary.contrastText }} />
           <Typography
             variant="h6"
             noWrap
@@ -53,21 +71,24 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: theme.palette.primary.contrastText,
               textDecoration: 'none',
             }}
           >
           Hangu.ai
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }}}>
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              // color="inherit"
+              sx={{
+                color: theme.palette.primary.contrastText,
+              }}
             >
               <MenuIcon />
             </IconButton>
@@ -87,6 +108,7 @@ function ResponsiveAppBar() {
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
+                color: theme.palette.primary.contrastText,
               }}
             >
               {pages.map((page) => (
@@ -109,7 +131,7 @@ function ResponsiveAppBar() {
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: theme.palette.primary.contrastText,
               textDecoration: 'none',
             }}
           >
@@ -120,7 +142,7 @@ function ResponsiveAppBar() {
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: theme.palette.primary.contrastText, display: 'block' }}
               >
                 {page}
               </Button>
@@ -134,7 +156,7 @@ function ResponsiveAppBar() {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: '45px', color: theme.palette.primary.contrastText}}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
