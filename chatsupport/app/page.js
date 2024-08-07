@@ -57,51 +57,8 @@ export default function Home() {
         body: JSON.stringify([...messages, { role: 'user', content: message }]),
       })
 
-
-      // Added conditional responses based on user input
-      if (message.toLowerCase.includes('billing', 'payment', 'subscription')) {
-        setMessages((messages) => [
-          ...messages,
-          {
-            role: 'assistant',
-            content: `For billing, payment, or subscription inquiries:
-            
-            1. Billing Process:
-
-            Your subscription fee will be automatically billed monthly based on your chosen membership plan.
-            Accepted payment methods include credit/debit cards and PayPal.
-            
-            2. Cancelling Your Subscription:
-
-            To cancel your subscription, log in to your account, go to the "Account Settings" section, and select "Cancel Subscription."
-            You will continue to have access to your membership features until the end of your current billing cycle.
-            
-            3. Updating Payment Information:
-
-            To update your payment method, log in to your account, navigate to "Billing Information," and enter your new payment details.
-            
-            4. Refunds:
-
-            Refunds are processed on a case-by-case basis. Please contact our support team for assistance with any refund requests.
-            
-            5. Billing Issues:
-
-            If you encounter any issues with billing, such as incorrect charges or failed payments, please contact our support team at [support email] for prompt assistance.
-            
-            6. Membership Plans:
-
-            Basic Membership - $0/month
-            Access to basic features, email support, monthly newsletters, and basic event planning.
-            Premium Membership - $15/month
-            Access to all features, priority email support, weekly newsletters, and exclusive event planning.
-            VIP Membership - $35/month
-            Access to all features, 24/7 priority support, daily newsletters, exclusive content, and personalized event planning assistance.`,
-          },
-        ]);
-      }
-
-      // Added conditional responses based on user input
-      if (message.toLowerCase().includes('membership', 'pricing')) {
+      // // Added conditional responses based on user input
+      if (message.toLowerCase().includes('membership') || message.toLowerCase().includes('pricing')) {
         setMessages((messages) => [
           ...messages,
           {
@@ -114,13 +71,13 @@ export default function Home() {
             - Monthly newsletters
             - Access to basic event planning
           
-          2. **Premium Membership** - $15/month
+          2. Premium Membership - $15/month
             - Access to all features
             - Priority email support
             - Weekly newsletters
             - Access to exclusive event planning
           
-          3. **VIP Membership** - $35/month
+          3. VIP Membership - $35/month
             - Access to all features
             - 24/7 priority support
             - Daily newsletters
