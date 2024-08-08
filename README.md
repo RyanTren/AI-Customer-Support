@@ -9,7 +9,7 @@
   
 - [ ] Deploy your web-app to AWS EC2 Servers
 - [ ] Respond to the user with LLMs through the AWS Bedrock API
-- [ ]Implement RAG so the chatbot responds based on a given knowledge base
+- [ ] Implement RAG so the chatbot responds based on a given knowledge base
 - [ ] Create an LLM orchestration pattern with a router and task specific models
 
 * Sprint 4
