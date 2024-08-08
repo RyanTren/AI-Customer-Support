@@ -6,11 +6,13 @@
 
 ## Future Plans
 - Sprint 3
-[] Deploy your web-app to AWS EC2 Servers
-[] Respond to the user with LLMs through the AWS Bedrock API
-[]Implement RAG so the chatbot responds based on a given knowledge base
-[] Create an LLM orchestration pattern with a router and task specific models
+  
+[ ] Deploy your web-app to AWS EC2 Servers
+[ ] Respond to the user with LLMs through the AWS Bedrock API
+[ ]Implement RAG so the chatbot responds based on a given knowledge base
+[ ] Create an LLM orchestration pattern with a router and task specific models
+
 - Sprint 4
-[] Bonus: Add multi-language support to cater to a diverse customer base
-[] Bonus: Add user authentication to personalize the chat experience
-[] Bonus: Implement a feedback mechanism for users to rate the chatbot's responses
+[ ] Bonus: Add multi-language support to cater to a diverse customer base
+[ ] Bonus: Add user authentication to personalize the chat experience
+[ ] Bonus: Implement a feedback mechanism for users to rate the chatbot's responses
