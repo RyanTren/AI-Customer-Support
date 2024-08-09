@@ -14,19 +14,21 @@ import InputAdornment from '@mui/material/InputAdornment';
 const theme = createTheme({
   palette: {
     primary: {
-      light: '#65A863',
-      main: '#50AF4D',
-      dark: '#31A72F',
-      contrastText: '#F9F7EF',
+      light: '#858666',
+      main: '#4D5038',
+      dark: '#222217',
+      contrastText: '#D2CBC1',
     },
     secondary: {
       light: '#d4c8a1',
       main: '#ada178',
       dark: '#91886a',
-      contrastText: '#F9F7EF',
+      contrastText: '#EBE3D2',
     },
   },
 });
+
+const sendIcon = '/images/send.png';
 
 export default function Home() {
   const [messages, setMessages] = useState([
@@ -156,7 +158,7 @@ export default function Home() {
         justifyContent="center"
         alignItems="center"
       >
-        <h1 sx={{bgcolor:theme.palette.primary.main, color:theme.palette.primary.light}} spacing={3} gap={3}>Chat with us in real time!</h1>
+        {/* <h1 sx={{bgcolor:theme.palette.primary.main, color:theme.palette.primary.light}}color='theme.palette.primary.light' spacing={3} gap={3}>Chat with us in real time!</h1> */}
 
         <Stack
         sx = {{
@@ -164,8 +166,8 @@ export default function Home() {
           borderRadius: 4,
         }}
           direction={'column'}
-          width="500px"
-          height="700px"
+          width="80vw"
+          height="80vh"
           p={2}
           spacing={3}
         >
@@ -193,12 +195,12 @@ export default function Home() {
                 <Box
                   bgcolor={
                     message.role === 'assistant'
-                      ? theme.palette.primary.light
+                      ? theme.palette.primary.main
                       : theme.palette.secondary.main
                   }
                   sx={{
-                    borderRadius: 4,
-                    color: theme.palette.primary.contrastText,
+                    borderRadius: 6,
+                    color: theme.palette.secondary.contrastText,
                   }}
                   color="white"
                   p={2}
@@ -213,14 +215,6 @@ export default function Home() {
               sx={{
                 backgroundColor: theme.palette.primary.contrastText,
                 color: theme.palette.primary.contrastText,
-                border: '1px solid theme.palette.primary.main',
-                '&:hover': {
-                  border: '1px solid theme.palette.primary.main',
-                },
-                '&.Mui-focused': {
-                  border: '1px solid #3f51b5',
-                },
-                borderRadius: 6,
               }}
 
               InputProps={{
@@ -237,6 +231,11 @@ export default function Home() {
               fullWidth
               value={message}
               onChange={(e) => setMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  sendMessage();
+                }
+              }}
               color="success"
             />
 
@@ -253,8 +252,9 @@ export default function Home() {
 
               variant="contained" 
               onClick={sendMessage}
+              
             >
-            ↵
+              <img src={sendIcon} height={22} ></img>
             </Button>
           </Stack>
         </Stack>

@@ -18,21 +18,21 @@ import { createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Pricing', 'Support'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-const imagePath = 'app/images/default-pfp.jpg'; // Update this path if necessary
+const imagePath = '/images/default-pfp.jpg'; // Update this path if necessary
 
 const theme = createTheme({
   palette: {
     primary: {
-      light: '#65A863',
-      main: '#50AF4D',
-      dark: '#31A72F',
-      contrastText: '#F9F7EF',
+      light: '#858666',
+      main: '#4D5038',
+      dark: '#222217',
+      contrastText: '#D2CBC1',
     },
     secondary: {
       light: '#C2E9F5',
       main: '#16BAEC',
       dark: '#168CEC',
-      contrastText: '#F9F7EF',
+      contrastText: '#D2CBC1',
     },
   },
 });
@@ -154,11 +154,15 @@ function ResponsiveAppBar() {
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
               <Avatar
+                sx={{
+                  bgcolor: theme.palette.secondary.main,
+                  background: theme.palette.primary.contrastText,
+                }}
                 src={imagePath}
                 alt="User Avatar"
                 onError={(e) => {
                   e.target.onerror = null; // Prevents infinite loop if fallback image is also not found
-                  e.target.src = 'app/images/default-pfp.jpg'; // Fallback image
+                  e.target.src = '/images/default-pfp.jpg'; // Fallback image
                 }}
               />
               </IconButton>
