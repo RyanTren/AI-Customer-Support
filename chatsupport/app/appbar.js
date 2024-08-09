@@ -18,6 +18,7 @@ import { createTheme } from '@mui/material/styles';
 
 const pages = ['Home', 'Pricing', 'Support'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const imagePath = 'app/images/default-pfp.jpg'; // Update this path if necessary
 
 const theme = createTheme({
   palette: {
@@ -152,7 +153,14 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+              <Avatar
+                src={imagePath}
+                alt="User Avatar"
+                onError={(e) => {
+                  e.target.onerror = null; // Prevents infinite loop if fallback image is also not found
+                  e.target.src = 'app/images/default-pfp.jpg'; // Fallback image
+                }}
+              />
               </IconButton>
             </Tooltip>
             <Menu

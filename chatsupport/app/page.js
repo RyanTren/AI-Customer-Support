@@ -40,12 +40,41 @@ export default function Home() {
   const sendMessage = async () => {
     if (!message.trim()) return;  // Don't send empty messages
 
+    // Function to check if a string contains only ASCII characters
+    const isAscii = (str) => /^[\x00-\x7F]*$/.test(str);
+
+    // Check if the message contains only ASCII characters
+    if (!isAscii(message)) {
+      console.error('Error: Only ASCII characters are allowed.');
+      setMessages((messages) => [
+        ...messages,
+        { role: 'assistant', content: "Error: Only ASCII characters are allowed." },
+      ]);
+      setMessage(''); //Clears the input field to get rid of non-ASCII characters
+      return;
+    }
+
+    // Count the number of unique users
+    const userRoles = messages.filter((msg) => msg.role === 'user');
+    const uniqueUsers = new Set(userRoles.map((msg) => msg.userId)).size;
+    
+
+    // Check if there are already two users
+    if (uniqueUsers >= 2) {
+      console.error('Error: Only two users are allowed.');
+      setMessages((messages) => [
+        ...messages,
+        { role: 'assistant', content: "Error: Only two users are allowed." },
+      ]);
+      return;
+    }
+
     setMessage('')
     setMessages((messages) => [
       ...messages,
       { role: 'user', content: message },
       { role: 'assistant', content: '' },
-    ])
+    ]);
 
     try {
       const response = await fetch('/api/chat', {
@@ -132,11 +161,11 @@ export default function Home() {
         <Stack
         sx = {{
           boxShadow: 3,
+          borderRadius: 4,
         }}
           direction={'column'}
           width="500px"
           height="700px"
-          borderRadius={4}
           p={2}
           spacing={3}
         >
@@ -167,8 +196,11 @@ export default function Home() {
                       ? theme.palette.primary.light
                       : theme.palette.secondary.main
                   }
+                  sx={{
+                    borderRadius: 4,
+                    color: theme.palette.primary.contrastText,
+                  }}
                   color="white"
-                  borderRadius={6}
                   p={2}
                 >
                   {message.content}
@@ -188,6 +220,7 @@ export default function Home() {
                 '&.Mui-focused': {
                   border: '1px solid #3f51b5',
                 },
+                borderRadius: 6,
               }}
 
               InputProps={{
@@ -201,7 +234,6 @@ export default function Home() {
               id="outlined-basic" 
               variant="outlined"
               label="Message Hangu.ai"
-              borderRadius={6}
               fullWidth
               value={message}
               onChange={(e) => setMessage(e.target.value)}
@@ -216,8 +248,9 @@ export default function Home() {
                 },
                 color: theme.palette.primary.contrastText,
                 fontSize: 25,
+                borderRadius: 2,
               }}
-              borderRadius={2}
+
               variant="contained" 
               onClick={sendMessage}
             >
@@ -227,5 +260,6 @@ export default function Home() {
         </Stack>
       </Box>
     </Box>
+
   )
 }
